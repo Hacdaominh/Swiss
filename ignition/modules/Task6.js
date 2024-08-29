@@ -104,7 +104,6 @@ async function main() {
       contractAddress: proxy.target,
       contractLink: `https://explorer-evm.testnet.swisstronik.com/address/${proxy.target}`,
       replaceContractLink: `https://explorer-evm.testnet.swisstronik.com/tx/${replaceContract.hash}`,
-      screenShot: `https://explorer-evm.testnet.swisstronik.com/address/${proxy.target}/contracts#address-tabs`,
     };
 
     jsonData[`Account ${count}`] = data;

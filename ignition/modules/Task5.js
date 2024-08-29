@@ -32,7 +32,6 @@ async function main() {
     });
     data["Task 5"] = {
       contractAddress: await privateERC721.getAddress(),
-      screenShot: `https://explorer-evm.testnet.swisstronik.com/address/${privateERC721.target}/contracts#address-tabs`,
     };
 
     jsonData[`Account ${count}`] = data;
