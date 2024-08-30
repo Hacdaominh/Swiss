@@ -25,11 +25,6 @@ async function main() {
     );
     await privateERC721.waitForDeployment();
     console.log("PrivateERC721 deployed to:", privateERC721.target);
-    contractsToVerify.push({
-      address: privateERC721.target,
-      constructorArguments: [],
-      contract: "contracts/PrivateERC721.sol:PrivateERC721",
-    });
     data["Task 5"] = {
       contractAddress: await privateERC721.getAddress(),
     };

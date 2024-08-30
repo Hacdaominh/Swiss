@@ -71,12 +71,6 @@ async function main() {
     await proxy.waitForDeployment();
     console.log("Proxy deployed to:", proxy.target);
 
-    contractsToVerify.push({
-      address: proxy.target,
-      constructorArguments: [swissV1.target, proxyAdmin.target, "0x"],
-      contract: "contracts/SwisstronikProxy.sol:SwisstronikProxy",
-    });
-
     const swissV2Factory = await hre.ethers.getContractFactory("SwisstronikV2");
     const swissV2 = await swissV2Factory.connect(signer).deploy();
     await swissV2.waitForDeployment();

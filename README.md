@@ -10,7 +10,7 @@ Try running some of the following tasks:
 npm install
 ```
 
-Run each of task with corresponding script name (`Task1.js`, `Task2.js`, `Task3.js`, `Task4.js`, `Task5.js`)
+Run each of task with corresponding script name (`Task1.js`, `Task2.js`, `Task3.js`, `Task4.js`, `Task5.js`, `Task6.js`)
 
 ```shell
 npx hardhat run ignition/modules/Task1.js --network swisstronik
@@ -22,6 +22,8 @@ npx hardhat run ignition/modules/Task3.js --network swisstronik
 npx hardhat run ignition/modules/Task4.js --network swisstronik
 
 npx hardhat run ignition/modules/Task5.js --network swisstronik
+
+npx hardhat run ignition/modules/Task6.js --network swisstronik
 ```
 
 **Note:** Task 5 & Task 6 is not available now because the explorer is not finished indexing and we can not verify the contract. Keep calm until it will be finished. Devs are working hard. Good Luck you, guys !!!
