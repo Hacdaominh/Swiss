@@ -34,6 +34,25 @@ const sendShieldedTransaction = async (signer, destination, data, value) => {
 let jsonData = {};
 let data = {};
 let count = 0;
+let verifyParams = [];
+
+let verifyContract = async (contractAddress, args = []) => {
+  try {
+    await hre.run("verify:verify", {
+      address: contractAddress,
+      constructorArguments: args,
+      contract: "contracts/SwisstronikProxy.sol:SwisstronikProxy",
+    });
+    console.log(
+      "Contract verified to",
+      hre.config.etherscan.customChains[0].urls.browserURL +
+        "/address/" +
+        contractAddress
+    );
+  } catch (err) {
+    console.error("Error veryfing Contract. Reason:", err);
+  }
+};
 
 async function main() {
   const valueTransfer = hre.ethers.parseEther("1");
@@ -99,11 +118,24 @@ async function main() {
       contractLink: `https://explorer-evm.testnet.swisstronik.com/address/${proxy.target}`,
       replaceContractLink: `https://explorer-evm.testnet.swisstronik.com/tx/${replaceContract.hash}`,
     };
+    verifyParams.push({
+      address: signer.address,
+      contractAddress: proxy.target,
+      args: [swissV1.target, proxyAdmin.target, "0x"],
+    });
 
     jsonData[`Account ${count}`] = data;
     console.log(data);
     await delay(5 * 1000);
   }
+  // Verify contract
+  console.log("Verifying contract...");
+  for (const contract of verifyParams) {
+    console.log("Verifying", contract.contractAddress, "of", contract.address);
+    await verifyContract(contract.contractAddress, contract.args);
+    await delay(5 * 1000);
+  }
+  //
   console.log("---------------------JSON OUTPUT---------------------");
   console.log(jsonData);
   try {

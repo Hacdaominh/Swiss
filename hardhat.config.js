@@ -19,7 +19,7 @@ module.exports = {
       timeout: 4000000,
       url: "https://json-rpc.testnet.swisstronik.com/", //URL of the RPC node for Swisstronik.
       // url: "https://rpc.testnet.swisstronik.com",
-      accounts: ["0x" + "private key", "0x" + "private key"],
+      accounts: ["0x" + "private key"],
     },
   },
   etherscan: {
